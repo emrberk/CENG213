@@ -71,16 +71,7 @@ void SocialNetwork::deleteProfile(const std::string& email) {
         currfriend->data->dropFriend(deletedProfile);
     }
    
-    /*
-    for (currprof = profiles.getFirstNode(); currprof != nullptr; currprof = currprof->next) {
-        for (currpost = currprof->data.getLikes().getFirstNode(); currpost != nullptr; currpost = currpost->next) {
-            if (containspost(currpost->data->getPostId(), deletedProfile)) {
-                currprof->data.dropLike(currpost->data);
-            }
-        }
-
-    }*/
-    for (currpost = deletedProfile->getPosts().getFirstNode(); currpost != nullptr; currpost = currpost->next) {
+   for (currpost = deletedProfile->getPosts().getFirstNode(); currpost != nullptr; currpost = currpost->next) {
 
         for (currprof = profiles.getFirstNode(); currprof != nullptr; currprof = currprof->next) {
 
@@ -176,7 +167,6 @@ LinkedList<Profile*> SocialNetwork::getMutualFriends(const std::string& email1, 
     LinkedList<Profile*> mutuals;
     Node<Profile>* first = nullptr;
     Node<Profile>* second = nullptr;
-    //bool assigned=false;
     for (current = profiles.getFirstNode(); current != nullptr; current = current->next) {
 
         if (current->data.getEmail() == email1) {
